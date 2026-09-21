@@ -308,7 +308,7 @@ impl Chunk {
     }
 
     /// Load from `RWOps` for use as a sample.
-    pub fn from_rwops(rwops: RWops) -> Result<Chunk, String> {
+    pub fn from_rwops(rwops: RWops<'_>) -> Result<Chunk, String> {
         let raw = unsafe { mixer::Mix_LoadWAV_RW(rwops.raw(), 0) };
         Self::from_owned_raw(raw)
     }
